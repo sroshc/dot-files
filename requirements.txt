@@ -1,0 +1,15 @@
+sway
+wmenu
+swaylock
+swaybar
+swaynag
+kitty
+librewolf
+pavucontrol
+fastfetch
+grim
+slurp
+swappy
+brightnessctl
+mpv
+imv
