@@ -9,10 +9,10 @@ while true; do
   current_time=$(date +%s)
 
   if (( current_time - last_temp_update >= temp_update_interval )); then
-    cpu_temp=$(sensors | awk '/Core 0/ {print $3; exit}')
+    cpu_temp=$(sensors | grep "Package id 0:" | awk '{print $4}')
     [[ -z "$cpu_temp" ]] && cpu_temp="N/A"
 
-    gpu_temp=$(sensors | awk '/edge|temp1|GPU/ {print $2; exit}')
+    gpu_temp="+$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader)°C"
     [[ -z "$gpu_temp" ]] && gpu_temp="N/A"
 
     last_temp_update=$current_time

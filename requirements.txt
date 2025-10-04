@@ -3,6 +3,10 @@ wmenu
 swaylock
 swaybar
 swaynag
+swaybg
+wl-copy
+jq
+sensors
 kitty
 librewolf
 pavucontrol
