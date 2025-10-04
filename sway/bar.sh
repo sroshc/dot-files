@@ -12,7 +12,7 @@ while true; do
     cpu_temp=$(sensors | grep "Package id 0:" | awk '{print $4}')
     [[ -z "$cpu_temp" ]] && cpu_temp="N/A"
 
-    gpu_temp="+$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader)°C"
+    gpu_temp="+$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader).0°C"
     [[ -z "$gpu_temp" ]] && gpu_temp="N/A"
 
     last_temp_update=$current_time
