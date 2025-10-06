@@ -4,6 +4,7 @@ swaylock
 swaybar
 swaynag
 swaybg
+mako
 wl-copy
 jq
 sensors
