@@ -5,6 +5,9 @@ gpu_temp="N/A"
 last_temp_update=0
 temp_update_interval=5 # in seconds 
 
+has_warned_battery_life=false
+battery_warn_precentage=10
+
 while true; do
   current_time=$(date +%s)
 
@@ -29,6 +32,11 @@ while true; do
     charging=$(<"/sys/class/power_supply/AC/online")
     
     battery="${battery_level}%"
+    if [[ ! $has_warned_battery_life == false && $battery_level -lt $battery_warn_precentage ]] ; then
+      notify-send "Battery at or under 10%!" "Plug in soon"
+      has_warned_battery_life=true
+    fi
+
     if [[ $charging == 0 ]]; then
       energy_now=$(cat $battery_path/energy_now)
       power_now=$(cat $battery_path/power_now)
@@ -36,6 +44,7 @@ while true; do
 
       battery="$battery  $time_till_empty hours"  
     else
+      has_warned_battery_life=false
       battery="$battery (charging)" 
     fi
   else
