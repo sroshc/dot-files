@@ -158,4 +158,4 @@ bindsym $mod+r mode "resize"
     # wl-copy --type image/png
     bindsym $mod+p exec grim -g "$(slurp)" - | swappy -f -
 
-include /etc/sway/config.d/*
+include ~/.config/sway/config.d/*
