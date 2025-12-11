@@ -1,1 +1,4 @@
-# the defaults work fine
+-u
+-k
+-c 000000FF
+

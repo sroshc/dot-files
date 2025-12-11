@@ -1,8 +1,4 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# Sroshc's sway configuration
 
 ## Variables
 #
@@ -13,85 +9,14 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term kitty --single-instance
-# Your preferred application launcher
-set $menu wmenu-run -S ffccf9ff -N 000000 -s 000000 -m ffffff -n ffffff
-# Your browser
-set $browser librewolf
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/.config/sway/backgrounds/abstract-swirls.jpg fill
-
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
-#
-# You can also configure each device individually.
-# Read `man 5 sway-input` for more information about this section.
 
 input type:touchpad {
   dwt disabled
   
 }
-
-
 ### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+Return exec $term
-    bindsym $mod+T exec $term
-
-    # Start a browser
-    bindsym $mod+f exec $browser
-
-    # Kill focused window
-    bindsym $mod+q kill
-
-    # Start your launcher
-    bindsym $mod+d exec $menu
-    
-    # Start volume control
-    bindsym $mod+Shift+p exec pavucontrol
-
-    # Lock sway session
-    bindsym $mod+Alt+l exec swaylock -u -c 00000011
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -232,38 +157,5 @@ bindsym $mod+r mode "resize"
     bindsym Print exec grim - | swappy -f -
     # wl-copy --type image/png
     bindsym $mod+p exec grim -g "$(slurp)" - | swappy -f -
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    id mainbar
-    position top
-    
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command ~/.config/sway/bar.sh
-
-    colors {
-        statusline #ffffff
-        background #000000
-        inactive_workspace #32323200 #32323200 #5c5c5c
-        focused_workspace #ffccf9ff #ffccf9ff #00000000
-    }
-}
-
-# Toggle bar
-bindsym $mod+Shift+B exec ~/.config/sway/toggle_bar.sh 
-
-# Cool colors n shit
-client.focused          #ffccf9ff #ffbdf7ff #a56cc1ff #ffc8ddff #f3c4fbff
-client.urgent           #ffc0cbff #ffc0cbff #8b0000ff #ff6f91ff #ff8a9aff
-client.placeholder      #00000000 #00000000 #ffffff00 #00000000 #00000000
-client.background       #fff0f5ff
-
-default_border pixel 1
-smart_borders true
-default_floating_border none
 
 include /etc/sway/config.d/*
