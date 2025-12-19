@@ -39,4 +39,5 @@ for config in config/*; do
   fi
 done
 
-echo "$seperator\n Finished!"
+echo "$seperator" 
+echo "Finished!"
