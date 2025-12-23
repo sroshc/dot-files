@@ -1,4 +1,3 @@
--u
--k
--c 000000FF
-
+no-unlock-indicator
+show-keyboard-layout
+color=000000FF
